@@ -42,8 +42,8 @@ public class PessoaController {
 
     //PUT
     @PutMapping
-    public PessoaModel atualizarPessoa(@PathVariable Long id, @RequestBody ProdutoModel produtoModel) {
-        return pessoaService.atualizarPessoa(id, produtoModel);
+    public PessoaModel atualizarPessoa(@PathVariable Long id, @RequestBody PessoaModel pessoaModel) {
+        return pessoaService.atualizarPessoa(id, pessoaModel);
     }
 
     //DELETE {id}
