@@ -2,23 +2,17 @@ package com.security.br.models;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
 @Entity
-public class PessoaModel {
+@Table(name = "Job")
+public class JobModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Integer idade;
+    private String endereco;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<JobModel> jobs = new ArrayList<>();
-
-    public PessoaModel(){}
+    public JobModel() {}
 
     public Long getId() {
         return id;
@@ -36,11 +30,11 @@ public class PessoaModel {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
