@@ -16,7 +16,7 @@ public class PessoaModel {
     private Integer idade;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private List<JobModel> jobs = new ArrayList<>();
+    private List<JobModel> jobModelList = new ArrayList<>();
 
     public PessoaModel(){}
 
