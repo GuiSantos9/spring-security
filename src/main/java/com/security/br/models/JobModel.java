@@ -3,7 +3,7 @@ package com.security.br.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Job")
+@Table(name = "Job") // define o nome da tabela
 public class JobModel {
 
     @Id

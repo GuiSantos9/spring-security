@@ -9,10 +9,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 
-@Controller
-@EnableWebSecurity
+@Controller // expõe endpoints http
+@EnableWebSecurity // ele habilita ou desabilita o web security
 public class SecurityConfiguration {
 
+    // registra qualquer objeto no container
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         return httpSecurity.csrf(csrf -> csrf.disable())

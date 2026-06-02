@@ -7,35 +7,35 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service // cria uma camada de serviços que definem as regras de negócio
 public class PessoaService {
 
-    @Autowired
+    @Autowired // injeta dependencias
     private PessoaRepository pessoaRepository;
 
-    //POST criar
+    //POST molda a função de criação de pessoas
     public PessoaModel criarPessoa(PessoaModel pessoaModel){
         return pessoaRepository.save(pessoaModel);
     }
 
-    //GET listar
+    //GET molda a função de listagem de pessoas
     public List<PessoaModel> findAll(){
         return pessoaRepository.findAll();
     }
 
-    //GET buscar por id
+    //GET molda a função de buscar por id de pessoas
     public PessoaModel buscarPessoa(Long id){
         return pessoaRepository.findById(id).get();
     }
 
-    //PUT atualizar
+    //PUT molda a função de modificação de pessoas
     public PessoaModel atualizarPessoa(Long id, PessoaModel pessoaModel){
         PessoaModel newPessoaModel = pessoaRepository.findById(id).get();
         newPessoaModel.setId(pessoaModel.getId());
         return pessoaRepository.save(newPessoaModel);
     }
 
-    //DELETE deletar por id
+    //DELETE molda a função de deletar por id de pessoas
     public void deletarPessoa(Long id){
         pessoaRepository.deleteById(id);
     }

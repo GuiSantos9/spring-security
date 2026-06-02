@@ -10,14 +10,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController
-@RequestMapping("/pessoas")
+@RestController // cria a camada de controle onde seram passadas todas as rotas da API
+@RequestMapping("/pessoas") // cria um endpoint para a API
 public class PessoaController {
 
-    @Autowired
+    @Autowired // injeta dependências
     private PessoaService pessoaService;
 
-    //POST
+    //POST cria uma pessoa
     @PostMapping
     public ResponseEntity<PessoaModel> criarPessoa(@RequestBody PessoaModel pessoaModel){
         PessoaModel request = pessoaService.criarPessoa(pessoaModel);
@@ -27,26 +27,26 @@ public class PessoaController {
         return ResponseEntity.created(uri).body(request);
     }
 
-    //GET
+    //GET lista uma pessoa
     @GetMapping
     public ResponseEntity<List<PessoaModel>> findAll(){
         List<PessoaModel> list = pessoaService.findAll();
         return ResponseEntity.ok().body(list);
     }
 
-    //GET {id}
+    //GET {id} busca uma pessoa pelo id
     @GetMapping("{id}")
     public PessoaModel buscarPessoa(@PathVariable Long id){
         return pessoaService.buscarPessoa(id);
     }
 
-    //PUT
+    //PUT modifica uma pessoa
     @PutMapping
     public PessoaModel atualizarPessoa(@PathVariable Long id, @RequestBody PessoaModel pessoaModel) {
         return pessoaService.atualizarPessoa(id, pessoaModel);
     }
 
-    //DELETE {id}
+    //DELETE {id} deleta a pessoa pelo id
     @DeleteMapping("{id}")
     public ResponseEntity<?> deletarPessoa(@PathVariable Long id){
         pessoaService.deletarPessoa(id);
