@@ -41,3 +41,4 @@ public interface CampeaoRepository extends JpaRepository<Campeao, Long>{
 # Spring Security
 - Autenticação(Login): Valida se o usuário é que diz ser através de Login e Senha
 - Autorização(Roles): Verifica as permissões do usuário. ADMIN vs USER 
+
