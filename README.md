@@ -10,3 +10,9 @@
     // Atributos 
   }
 ```
+# Identidade Única
+- Identity: banco de dados decido o ID (auto-incremento)
+- UUID: gera um código gigante e único aleatório
+- Sequence: Usa uma tabela de apoio para dar o próximo id
+- Auto: O Hibernate escolhe a melhor opção sozinho
+
