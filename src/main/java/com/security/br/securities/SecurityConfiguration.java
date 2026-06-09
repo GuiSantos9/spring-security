@@ -9,7 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 
-@Controller // expõe endpoints http
+@Configuration // expõe endpoints http
 @EnableWebSecurity // ele habilita ou desabilita o web security
 public class SecurityConfiguration {
 
@@ -20,11 +20,22 @@ public class SecurityConfiguration {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers(HttpMethod.GET, "/pessoas").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/pessoas").permitAll()
-                                .requestMatchers(HttpMethod.DELETE, "/pessoas/**").permitAll()
-                                .requestMatchers(HttpMethod.PUT, "/pessoas/**").permitAll())
+                        auth.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/pessoas").hasRole("ADMIN")
+                                .anyRequest().authenticated())
                 .build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 }
